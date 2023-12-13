@@ -1,5 +1,7 @@
 <template>
     <div class="testPage">
+        <p>你好</p>
+        <p>世界</p>
     </div>
 </template>
   
