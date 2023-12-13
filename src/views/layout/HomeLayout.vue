@@ -1,16 +1,22 @@
 <template>
     <div class="homeDiv">
+        <button @click="changeLocale">切换语言</button>
         <div class="main">
-            <h1>前端学习栈</h1>
+            <h1>{{ t('HomeLayout.title') }}</h1>
             <div class="linkDiv">
-                <router-link class="linkTo" :to="{ name: 'TestPage' }">测试页面</router-link>
-                <router-link class="linkTo" :to="{ name: 'DetailPage' }">详情页面</router-link>
+                <router-link class="linkTo" :to="{ name: 'TestPage' }">{{ t('HomeLayout.test') }}</router-link>
+                <router-link class="linkTo" :to="{ name: 'DetailPage' }">{{ t('HomeLayout.detail') }}</router-link>
             </div>
         </div>
     </div>
 </template>
   
-<script setup></script>
+<script setup>
+import { useI18n } from 'vue-i18n'
+const { t, locale } = useI18n();
+const changeLocale = () => locale.value = locale.value === 'en' ? 'zh' : 'en';
+
+</script>
 <style lang="scss" scoped>
 .homeDiv {
 
@@ -23,9 +29,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        h1{
+
+        h1 {
             font-size: 70px;
         }
+
         .linkDiv {
             display: flex;
             justify-content: space-around;
