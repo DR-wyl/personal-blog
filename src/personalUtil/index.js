@@ -1,5 +1,5 @@
 // 节流函数
-function Throttle(fun, time) {
+export function Throttle(fun, time) {
     let bool = true;
     return () => {
         if (!bool) return;
@@ -12,7 +12,7 @@ function Throttle(fun, time) {
 }
 
 // 防抖函数
-function Debounce(fun, time) {
+export function Debounce(fun, time) {
     let timeID = null;
     return () => {
         clearTimeout(timeID);
@@ -21,7 +21,7 @@ function Debounce(fun, time) {
 }
 
 // 复制
-function useCopyContent(bool = true) {
+export function useCopyContent(bool = true) {
     // bool 设为true使用异步，反之使用同步
     // 同步兼容性更好，异步的使用失败了会调起同步的
     function copyContent(content) {
@@ -48,3 +48,25 @@ function useCopyContent(bool = true) {
     }
     return bool ? asyncCopyContent : copyContent;
 }
+
+// ECharts实例
+export function EChartInit(echarts, ele, option, onMounted, onError) {
+    try {
+        const myChart = echarts.init(ele);
+        myChart.setOption(option);
+        let timeID;
+        window.addEventListener("resize", () => {
+            clearTimeout(timeID);
+            timeID = setTimeout(myChart.resize, 300);
+        });
+        onMounted(ele, option, myChart);
+        return myChart;
+    } catch (e) {
+        if (onError) {
+            onError(e);
+        } else {
+            console.error(e);
+        }
+        return null;
+    }
+};
