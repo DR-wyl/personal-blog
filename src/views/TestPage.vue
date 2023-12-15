@@ -5,7 +5,15 @@
     </div>
 </template>
   
-<script setup></script>
+<script setup>
+function a() {
+    console.log(1);
+    Promise.resolve().then(() => { console.log(2); })
+}
+setTimeout(() => { console.log(3); }, 0);
+Promise.resolve().then(a);
+console.log(5);
+</script>
 <style lang="scss">
 .testPage {
     width: 1790px;
