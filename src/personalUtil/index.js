@@ -50,20 +50,27 @@ export function useCopyContent(bool = true) {
 }
 
 // ECharts实例
-export function EChartInit(echarts, ele, option, onMounted, onError) {
+export function EChartInit(echarts, objOption = {
+    el: '',
+    option: '',
+    onMounted: () => { },
+    onError: () => { }
+}) {
     try {
-        const myChart = echarts.init(ele);
-        myChart.setOption(option);
+        const myChart = echarts.init(objOption.el);
+        myChart.setOption(objOption.option);
         let timeID;
         window.addEventListener("resize", () => {
             clearTimeout(timeID);
             timeID = setTimeout(myChart.resize, 300);
         });
-        onMounted(ele, option, myChart);
+        if (objOption.onMounted) {
+            objOption.onMounted(objOption.el, objOption.option, myChart);
+        }
         return myChart;
     } catch (e) {
-        if (onError) {
-            onError(e);
+        if (objOption.onError) {
+            objOption.onError(e);
         } else {
             console.error(e);
         }
