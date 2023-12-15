@@ -13,14 +13,20 @@ const routes = [
     path: '/content',
     name: 'content',
     component: ContentLayout,
+    meta: {
+      name: '内容'
+    },
     children: [
       {
-        path: '/testpage',
+        path: 'testpage',
         name: 'TestPage',
         component: () => import('@/views/TestPage.vue'),
+        meta: {
+          name: '测试页面'
+        }
       },
       {
-        path: '/detailpage',
+        path: 'detailpage',
         name: 'DetailPage',
         component: () => import('@/views/DetailPage.vue'),
       }

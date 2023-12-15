@@ -19,6 +19,10 @@ const changeLocale = () => locale.value = locale.value === 'en' ? 'zh' : 'en';
 </script>
 <style lang="scss" scoped>
 .homeDiv {
+    // background-color: aqua;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: radial-gradient(at left bottom, rgb(17, 24, 39), rgb(75, 85, 99));
 
     .main {
         display: flex;
@@ -43,9 +47,7 @@ const changeLocale = () => locale.value = locale.value === 'en' ? 'zh' : 'en';
             height: 100%;
             margin-top: 30px;
 
-            /* background-color: #000000; */
             .linkTo {
-                // color: #ffffff;
                 padding: 10px;
                 font-size: 30px;
                 border: 1px solid rgb(213, 208, 208);
