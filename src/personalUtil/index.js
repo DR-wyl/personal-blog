@@ -21,7 +21,7 @@ function Debounce(fun, time) {
 }
 
 // 复制
-function useCopyContent(bool = ture) {
+function useCopyContent(bool = true) {
     // bool 设为true使用异步，反之使用同步
     // 同步兼容性更好，异步的使用失败了会调起同步的
     function copyContent(content) {
@@ -43,9 +43,8 @@ function useCopyContent(bool = ture) {
             await window.navigator.clipboard.writeText(text);
             return true;
         } catch (e) {
-            console.log('复制失败--采取第二种复制方案', err);
+            return copyContent(text);
         }
     }
-
     return bool ? asyncCopyContent : copyContent;
 }
