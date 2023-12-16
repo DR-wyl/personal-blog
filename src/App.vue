@@ -13,7 +13,7 @@ p {
 
 body {
   background-color: rgb(31, 31, 31);
-  min-width: 100vw;
+  // min-width: 100vw;
   min-height: 100vh;
 }
 

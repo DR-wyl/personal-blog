@@ -14,9 +14,9 @@ export function Throttle(fun, time) {
 // 防抖函数
 export function Debounce(fun, time) {
     let timeID = null;
-    return () => {
+    return (...args) => {
         clearTimeout(timeID);
-        timeID = setTimeout(fun, time);
+        timeID = setTimeout(fun, time, ...args);
     }
 }
 
@@ -77,3 +77,12 @@ export function EChartInit(echarts, objOption = {
         return null;
     }
 };
+
+export function useDebounceEditResizeObserver(time = 16) {
+    const wResizeObserver = window.ResizeObserver;
+    window.ResizeObserver = class ResizeObserver extends wResizeObserver {
+        constructor(callback) {
+            super(Debounce(callback, time));
+        }
+    };
+}
