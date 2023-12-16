@@ -98,6 +98,7 @@ onMounted(() => {
     EChartInit(echarts, {
         el: document.getElementById('main'),
         option,
+        resizeObserver: true
     });
 })
 </script>

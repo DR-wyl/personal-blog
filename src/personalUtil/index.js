@@ -50,20 +50,38 @@ export function useCopyContent(bool = true) {
 }
 
 // ECharts实例
-export function EChartInit(echarts, objOption = {
-    el: '',
-    option: '',
-    onMounted: () => { },
-    onError: () => { }
-}) {
+export function EChartInit(echarts, objOption) {
+    /* 
+        objOption传值示例
+        {
+            el: '',
+            // 容器元素
+            option: '',
+            // setOption参数
+            onMounted: () => { },
+            // 挂载后钩子
+            onError: () => { },
+            // 错误钩子
+            resizeObserver: true
+            // 使用resizeObserver自适应
+        }
+    */
     try {
         const myChart = echarts.init(objOption.el);
         myChart.setOption(objOption.option);
         let timeID;
-        window.addEventListener("resize", () => {
+        const DebounceCallback = () => {
             clearTimeout(timeID);
-            timeID = setTimeout(myChart.resize, 300);
-        });
+            timeID = setTimeout(myChart.resize, 100);
+        }
+        if (objOption.resizeObserver) {
+            // console.log('使用ResizeObserver');
+            const observer = new ResizeObserver(DebounceCallback);
+            observer.observe(objOption.el);
+        } else {
+            // console.log('使用窗口resize');
+            window.addEventListener("resize", DebounceCallback);
+        }
         if (objOption.onMounted) {
             objOption.onMounted(objOption.el, objOption.option, myChart);
         }
@@ -78,6 +96,7 @@ export function EChartInit(echarts, objOption = {
     }
 };
 
+// 直接调用可解决 ERROR ResizeObserver loop completed with undelivered notifications.
 export function useDebounceEditResizeObserver(time = 16) {
     const wResizeObserver = window.ResizeObserver;
     window.ResizeObserver = class ResizeObserver extends wResizeObserver {
@@ -85,4 +104,11 @@ export function useDebounceEditResizeObserver(time = 16) {
             super(Debounce(callback, time));
         }
     };
+}
+
+// 创建ResizeObserver
+export function createResizeObserver(el, callback) {
+    const observer = new ResizeObserver(callback);
+    observer.observe(el);
+    return observer;
 }
