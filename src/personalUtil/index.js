@@ -5,8 +5,6 @@ export function Throttle(fun, time) {
         if (!bool) return;
         setTimeout(() => { bool = true; }, time);
         bool = false;
-        console.log(fun);
-        let string = 'abc';
         fun();
     }
 }
