@@ -1,29 +1,4 @@
-<template>
-    <div class="testPage">
-        <div id="main">
-            <div>锁定</div>
-            <div class="chart">
-                <div class="row" v-for="v of dataList" :key="v">
-
-                    <div class="line" v-for="item of v" :key="item" @click="item.isShowInput = !item.isShowInput">
-                        <div v-if="!item.isShowInput" >
-                            {{ item.value }}
-                        </div>
-                        <input v-focus @blur="item.isShowInput = !item.isShowInput" v-else type="text" v-model="item.value">
-                    </div>
-
-                </div>
-                <div class="xq">兴趣</div>
-                <div class="zy">重要</div>
-            </div>
-        </div>
-    </div>
-</template>
-  
-<script setup>
-import { ref } from 'vue';
-const dataList = ref([]);
-dataList.value = [
+[
     [
         {
             "value": 0,
@@ -232,48 +207,4 @@ dataList.value = [
             "isShowInput": false
         }
     ]
-];
-
-
-
-</script>
-<style lang="scss" scoped>
-.testPage {
-    width: 1790px;
-
-    .chart {
-        // border-collapse: collapse;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        padding: 30px;
-
-        .row {
-            display: flex;
-
-            .line {
-                min-width: 60px;
-                min-height: 40px;
-                border: 1px solid #ffffff8e;
-            }
-        }
-
-        .xq {
-            position: absolute;
-            left: 0;
-            bottom: 30px;
-            font-size: 23px;
-            width: 23px;
-        }
-
-        .zy {
-            position: absolute;
-            left: 30px;
-            bottom: 0;
-            font-size: 23px;
-        }
-    }
-
-}
-</style>
-  
+]

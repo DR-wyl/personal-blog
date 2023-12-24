@@ -689,3 +689,44 @@ function switchTabAction() {
 | current-item-id        | String  |                   | 当前所在滑块的 item-id ，不能与 current 被同时指定           | 支付宝小程序不支持 |
 | interval               | Number  | 5000              | 自动切换时间间隔                                             |                    |
 | duration               | Number  | 500               | 滑动动画时长                                                 | app-nvue不支持     |
+
+## uniapp分包
+
+manifest.json文件中
+
+为mp-weixin字段添加如下属性
+
+```javascript
+	"mp-weixin": {
+		"optimization": {
+			"subPackages": true
+		}
+	},
+```
+
+pages.json文件中
+
+>在pages.json中新建数组"subPackages"，数组中包含两个参数：
+>
+>1.root：为子包的根目录，
+>
+>2.pages：子包由哪些页面组成，参数同pages；
+
+```javascript
+	"subPackages": [{
+		"root": "pageA",
+        // 包名根目录
+		"pages": [{
+			"path": "detail/detail"
+            // 根目录下的路径
+		}]
+	}],
+```
+
+项目结构展示
+
+![uniapp项目结构](./uniapp.assets/uniapp项目结构.png)
+
+查看分包情况
+
+![微信开发者工具查看分包情况](./uniapp.assets/微信开发者工具查看分包情况.png)
