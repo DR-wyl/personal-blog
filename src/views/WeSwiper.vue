@@ -1,4 +1,10 @@
 <script setup>
+/* 
+    被引入说明
+    <we-swiper :list="list" :is-auto="true"></we-swiper>
+    const list = ['https://picsum.photos/400/300?1', 'https://picsum.photos/400/300?2', 'https://picsum.photos/400/300?3', 'https://picsum.photos/400/300?4']
+*/
+// 待完成，屏幕resize时的自适应
 import { onMounted, onUnmounted, shallowRef, ref, defineProps } from 'vue';
 const props = defineProps({
     list: {
@@ -20,7 +26,8 @@ imgList.push(imgList[1]);
 
 onMounted(() => {
     boxWidth = parseInt(getComputedStyle(box.value).width);
-    imgAssets.value.style.left = -index.value * boxWidth + 'px';
+    // imgAssets.value.style.left = -index.value * boxWidth + 'px';
+    imgAssets.value.style.transform = `translateX(${-index * boxWidth + 'px'})`
     console.log(boxWidth);
     if (props.isAuto) {
         timeID = setInterval(toRightItem, 3000);
@@ -38,14 +45,15 @@ function reStart() {
 }
 
 function moveTo(index) {
-    imgAssets.value.style.transition = "left 0.5s";
-    imgAssets.value.style.left = -index * boxWidth + 'px';
-    // imgAssets.value.style.transition
+    imgAssets.value.style.transition = "all 0.5s";
+    // imgAssets.value.style.left = -index * boxWidth + 'px';
+    imgAssets.value.style.transform = `translateX(${-index * boxWidth + 'px'})`
 }
 // 边界值处理
 function BoundaryTreatment(index) {
     imgAssets.value.style.transition = "none";
-    imgAssets.value.style.left = -index * boxWidth + 'px';
+    // imgAssets.value.style.left = -index * boxWidth + 'px';
+    imgAssets.value.style.transform = `translateX(${-index * boxWidth + 'px'})`
     imgAssets.value.clientHeight; // 强制渲染
 }
 function toLeftItem() {
@@ -125,7 +133,7 @@ $control-item-height: 30px;
         height: 100%;
         // left: 0;
         // transition: left 0.5s;
-        
+
     }
 
     .pointer-list {
