@@ -1,5 +1,6 @@
 <template>
     <div class="testPage">
+        <!-- <div class="testC"></div> -->
         <div class="container">
             <!-- <we-swiper :list="list" :is-auto="true"></we-swiper> -->
             <input v-focus type="text">
@@ -31,9 +32,12 @@ async function init() {
     // );
     console.log(res);
 }
-init()
+// init()
 </script>
 <style lang="scss" scoped>
+// .testC{
+//     height: rpx(20);
+// }
 .testPage {
     // width: 1790px;
     box-sizing: border-box;
