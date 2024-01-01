@@ -73,8 +73,8 @@ let strTest:any = 'hello world';
 
 */
 interface LabelValue{
-    width:number,
-    text:string,
+    width:number;
+    text:string;
 }
 
 function printLabel(label:LabelValue):void{
