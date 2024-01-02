@@ -12,8 +12,6 @@
 <script setup>
 // import WeSwiper from './WeSwiper.vue'
 // const list = ['https://picsum.photos/400/300?1', 'https://picsum.photos/400/300?2', 'https://picsum.photos/400/300?3', 'https://picsum.photos/400/300?4']
-
-
 import { weRequest } from '@/util/werequest';
 async function init() {
     const res = await weRequest(
