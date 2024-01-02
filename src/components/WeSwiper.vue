@@ -133,7 +133,6 @@ $control-item-height: 30px;
         height: 100%;
         // left: 0;
         // transition: left 0.5s;
-
     }
 
     .pointer-list {
@@ -149,7 +148,6 @@ $control-item-height: 30px;
             border-radius: 50%;
             width: $point-item-width;
             height: $point-item-height;
-
 
             cursor: pointer;
             -webkit-backdrop-filter: blur(10px);

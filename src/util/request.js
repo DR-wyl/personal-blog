@@ -2,8 +2,6 @@ import axios from 'axios';
 import { ElMessage } from 'element-plus';
 
 const request = axios.create({
-  
-  // baseURL: 'https://condor-concrete-officially.ngrok-free.app',
   baseURL: `http://${process.env.VUE_APP_GOBAL_HOST}:${process.env.VUE_APP_GOBAL_PORT}/${process.env.NODE_ENV}`,
 });
 // 请求拦截器
