@@ -1,4 +1,4 @@
-const baseUrl = 'http://127.0.0.1:3000';
+const baseUrl = `http://${process.env.VUE_APP_GOBAL_HOST}:${process.env.VUE_APP_GOBAL_PORT}/${process.env.NODE_ENV}`;
 
 export function weRequest(obj) {
     return new Promise((resolve, reject) => {

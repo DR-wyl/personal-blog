@@ -2,8 +2,9 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: './',
+
   // publicPath 默认为/ 设定为./后这样打出来的包可以被部署在任意路径
+  publicPath: './',
 
   // chainWebpack 用于配置全局scss方法或变量
   chainWebpack: config => {
@@ -20,6 +21,8 @@ module.exports = defineConfig({
         .end()
     })
   },
+
+  // devServer 为服务器设置
   devServer: {
     host: process.env.VUE_APP_GOBAL_HOST,
     port: process.env.VUE_APP_GOBAL_PORT,
