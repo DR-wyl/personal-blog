@@ -9,5 +9,7 @@ import initDirective from './plugin/initDirective'
 
 const app = createApp(App);
 app.use(initDirective);
+
 // app.use(ElementPlus);
 app.use(router).use(i18n).mount('#app');
+
