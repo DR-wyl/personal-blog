@@ -19,7 +19,8 @@
     "vue": "^3.2.13",
     "vue-draggable-plus": "^0.3.2",
     "vue-i18n": "^9.8.0",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
