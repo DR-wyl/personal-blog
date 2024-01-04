@@ -110,3 +110,24 @@ export function createResizeObserver(el, callback) {
     observer.observe(el);
     return observer;
 }
+
+// 创建MutationObserver
+export function createMutationObserver(targetNode, callback = (mutationsList, observer) => { observer.disconnect(); }, config) {
+    /* 
+        observe 方法中 config 参数有已下几个选项：
+        childList：设置 true，表示观察目标子节点的变化，比如添加或者删除目标子节点，不包括修改子节点以及子节点后代的变化
+        attributes：设置 true，表示观察目标属性的改变
+        characterData：设置 true，表示观察目标数据的改变
+        subtree：设置为 true，目标以及目标的后代改变都会观察
+        attributeOldValue：如果属性为 true 或者省略，则相当于设置为 true，表示需要记录改变前的目标属性值，
+            设置了 attributeOldValue 可以省略 attributes 设置
+        characterDataOldValue：如果 characterData 为 true 或省略，则相当于设置为 true,表示需要记录改变之前的目标数据，
+            设置了 characterDataOldValue 可以省略 characterData 设置
+        attributeFilter：如果不是所有的属性改变都需要被观察，并且 attributes 设置为 true 或者被忽略，
+            那么设置一个需要观察的属性本地名称（不需要命名空间）的列表
+    */
+    const observer = new MutationObserver(callback);
+    config = config || { childList: true, subtree: true, attributes: true };
+    observer.observe(targetNode, config);
+    return observer;
+}
