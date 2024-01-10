@@ -23,7 +23,7 @@ function fileChange(e){
 </script>
 <style lang="scss" scoped>
 .testPage {
-    box-sizing: border-box;
+    box-sizing: content-box;
     // padding: 2px;
     img{
         width: 600px;
