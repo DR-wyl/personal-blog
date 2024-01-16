@@ -16,6 +16,7 @@
     "element-plus": "^2.4.4",
     "pinia": "^2.1.7",
     "postcss-px-to-viewport": "^1.1.1",
+    "qrcode": "^1.5.3",
     "vue": "^3.2.13",
     "vue-draggable-plus": "^0.3.2",
     "vue-i18n": "^9.8.0",
