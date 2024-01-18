@@ -6,7 +6,7 @@
 <script setup></script>
 <style lang="scss">
 .testPage {
-    width: 1790px;
+    box-sizing: content-box;
 }
 </style>
   
